@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable func-names */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
@@ -20,6 +21,15 @@ const setupInput = function () {
   stdin.resume(); // Resume stdin to begin receiving input
 
   // Event handler for keyboard input
+  const handleUserInput = function (key) {
+    if (key === '\u0003') {
+      process.exit(); // Exit the game if the user presses Ctrl + C
+    } else if (key === 'n') {
+      const name = 'RMR';
+      conn.write(`Name: ${name}`); // Send the name message to the server
+    }
+  };
+
   stdin.on('data', handleUserInput);
 
   return stdin;
