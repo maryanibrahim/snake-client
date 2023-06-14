@@ -1,26 +1,28 @@
 /* eslint-disable func-names */
 /* eslint-disable no-console */
-const net = require('net');
-
-// establishes a connection with the game server
-const connect = function () {
-  const conn = net.createConnection({
-    host: 'localhost',
-    port: 50541,
-  });
-
-  conn.setEncoding('utf8');
-
-  conn.on('connect', () => {
-    console.log('Successfully connected to game server');
-  });
-
-  conn.on('data', (data) => {
-    console.log('Server says:', data);
-  });
-
-  return conn;
-};
+/* eslint-disable no-unused-vars */
+const { connect } = require('./client'); // Import the connect function from client.js
 
 console.log('Connecting...');
-connect();
+const conn = connect(); // Connect to the game server
+
+// Keyboard input handling
+const handleUserInput = function (key) {
+  if (key === '\u0003') {
+    process.exit(); // Exit the game if the user presses Ctrl + C
+  }
+};
+
+const setupInput = function () {
+  const { stdin } = process;
+  stdin.setRawMode(true); // Enable raw mode to handle keyboard inputs
+  stdin.setEncoding('utf8'); // Interpret keyboard inputs as UTF-8 strings
+  stdin.resume(); // Resume stdin to begin receiving input
+
+  // Event handler for keyboard input
+  stdin.on('data', handleUserInput);
+
+  return stdin;
+};
+
+setupInput(); // Start listening for keyboard input
