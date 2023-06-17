@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable no-console */
 const { connect } = require('./client');
 const { setupInput } = require('./input');

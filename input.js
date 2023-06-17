@@ -1,29 +1,44 @@
-let connection; // Variable to hold the connection object
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-use-before-define */
+/* eslint-disable func-names */
+const {
+  IP, PORT, w, a, s, d, z, x,
+} = require('./constants');
 
-const setupInput = (conn) => {
-  connection = conn; // Assign the connection object to the variable
+let connection;
+
+// setup interface to handle user input from stdin
+const setupInput = function (conn) {
+  connection = conn;
+
   const { stdin } = process;
-  stdin.setRawMode(true); // Enable raw mode to handle keyboard inputs
-  stdin.setEncoding('utf8'); // Interpret keyboard inputs as UTF-8 strings
-  stdin.resume(); // Resume stdin to begin receiving input
+  stdin.setRawMode(true);
+  stdin.setEncoding('utf8');
+  stdin.resume();
 
+  stdin.on('data', (key) => {
+    handleUserInput(key);
+  });
+
+  return stdin;
+};
   // Event handler for keyboard input
-  const handleUserInput = (key) => {
-    if (key === '\u0003') {
-      process.exit(); // Exit the game if the user presses Ctrl + C
-    } else if (key === 'w') {
-      connection.write('Move: up'); // Send "Move: up" command to the server
-    } else if (key === 'a') {
-      connection.write('Move: left'); // Send "Move: left" command to the server
-    } else if (key === 's') {
-      connection.write('Move: down'); // Send "Move: down" command to the server
-    } else if (key === 'd') {
-      connection.write('Move: right'); // Send "Move: right" command to the server
-    }
-  };
-
-  stdin.on('data', handleUserInput);
+const handleUserInput = function (key) {
+  if (key === '\u0003') {
+    process.exit();
+  } else if (key === 'w') {
+    connection.write('Move: up');
+  } else if (key === 'a') {
+    connection.write('Move: left');
+  } else if (key === 's') {
+    connection.write('Move: down');
+  } else if (key === 'd') {
+    connection.write('Move: right');
+  } else if (key === 'z') {
+    connection.write('Say: Hello!');
+  } else if (key === 'x') {
+    connection.write('Say: Goodbye!');
+  }
 };
 
-// Export the setupInput function
 module.exports = { setupInput };
