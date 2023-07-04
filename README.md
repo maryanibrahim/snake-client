@@ -3,8 +3,7 @@ The Snake Game is a classic video game where the player controls a snake-like cr
 
 ## Final Product
 
-![Alt text](image-1.png)
-
+![Alt text](imgs/image-1.png)
 
 # How To Play
 
@@ -28,8 +27,8 @@ Press X to say "Goodbye!".
 
 ## Getting Started
 
-- server code for this game was not written from scratch. It is a heavily modified version of the single player game Snek created by Tania Rascia.
+- The server code for this game was not written from scratch. It is a heavily modified version of the single-player game Snek created by [Tania Rascia](https://github.com/taniarascia). You can find the original server code [here](https://github.com/taniarascia/snek).
 
-- Follow steps inside the snek server repo to run the server side
+- Follow steps inside the snek server repo to run the server side.
 
 - Run the development snake client using the `node play.js` command.

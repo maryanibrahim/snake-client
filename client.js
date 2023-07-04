@@ -1,14 +1,14 @@
-/* eslint-disable func-names */
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
-
 const net = require('net');
+
+// Define the IP and PORT constants for the game server
+const IP = '10.0.2.15';
+const PORT = 50541;
 
 // Function to establish a connection with the game server
 const connect = function () {
   const conn = net.createConnection({
-    host: 'localhost',
-    port: 50541,
+    host: IP,
+    port: PORT,
   });
 
   // Event handler for incoming data from the server
