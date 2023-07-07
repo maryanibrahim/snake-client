@@ -1,20 +1,17 @@
-const IP = '10.0.2.15';
+const IP = 'localhost'; // Switched to 'localhost'
 const PORT = 50541;
 
-const w = 'Move: up';
-const a = 'Move: left';
-const s = 'Move: down';
-const d = 'Move: right';
-const z = 'Say: Hello!';
-const x = 'Say: Goodbye!';
+const keys = {
+  w: 'Move: up',
+  a: 'Move: left',
+  s: 'Move: down',
+  d: 'Move: right',
+  z: 'Say: Hello!',
+  x: 'Say: Goodbye!',
+};
 
 module.exports = {
   IP,
   PORT,
-  w,
-  a,
-  s,
-  d,
-  z,
-  x,
+  keys,
 };

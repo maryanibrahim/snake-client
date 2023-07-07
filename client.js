@@ -1,8 +1,5 @@
 const net = require('net');
-
-// Define the IP and PORT constants for the game server
-const IP = '10.0.2.15';
-const PORT = 50541;
+const { IP, PORT, keys } = require('./constants'); // Assuming constants.js is in the same directory
 
 // Function to establish a connection with the game server
 const connect = function () {
